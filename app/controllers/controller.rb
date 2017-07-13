@@ -5,69 +5,48 @@ class Controller
     bienvenida
   end
 
-def bienvenida
-  select = @view.bienvenida.to_i
-  if select == 1
-    reservaciones = Booking.all
-    input_booking = @view.reservaciones
-    start_booking
-
-  elsif select == 2
-    puts "Admin"
-
-
-  elsif select == 3
-    puts "miaw"
-  else 
-    puts "Selecciona una opcion valida"
-  end        
-
-end
-
-def start_booking
-  puts "From:"
-  input_from = gets.chomp.downcase
-   input_from
-  puts "To:"
-  input_to = gets.chomp.downcase
-   input_to
-  puts "Date (YYYY-MM-DD)"
-  input_date = gets.chomp
-   input_date
-  variable = Flight.find_by(from: input_from, to: input_to, date: input_date)
-  if variable != nil
-  puts "***** VUELOS DISPONIBLES *****"
-  puts "Selecciona tu vuelo:"
-    pp variable
-  else
-    p "No existen vuelos"
+  def bienvenida
+    select = @view.bienvenida.to_i
+    if select == 1
+      input_booking = @view.reservaciones
+      start_booking
+    elsif select == 2
+      puts "Admin"
+    elsif select == 3
+      puts "miaw"
+    else 
+      puts "Selecciona una opcion valida"
+    end        
   end
 
+  def start_booking
+    datos = @view.ingresa_datos
+    input_vuelo = @view.muestra_vuelos(datos)
+    input_vuelo
+    booking(input_vuelo)
 
-
-  select = @view.booking.to_i
-  if select == 1
-    reservaciones = Booking.each_with_index
-    # input_booking = @view.booking
-    @view.booking
-
-  elsif select == 2
-    puts "Ya no se que hacer"
-
-  elsif select == 3
-    puts "Me voy a morir"
-  else 
-    puts "Selecciona una opción válida porfas"
-  end    
-
-      
     
-end
+   end
 
 
 
+ 
+  def booking(input_vuelo)
+     input_vuelo.each_with_index do |vuelo, index|
+      p vuelo
+      p index
 
+     p @view.booking_now(input_vuelo) == index
+      
+    end
 
+     
+
+     # input_vuelo.each_with_index do |x, index|
+     #   user_input = 1
+     #   input_vuelo[user_input-1]
+     # end
+  end
 
 
 
