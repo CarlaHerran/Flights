@@ -21,8 +21,18 @@ class Controller
         input_booking = @view.reservaciones
         start_booking
       elsif select == 2
-        crear_vuelo
-        
+           if @user.admin == true
+          crear_vuelo  
+             # p "-"*50
+             # p @user.admin == "t"
+             # p @user.admin == "f"
+             # p "-"*50
+           else
+            puts "Lo sentimos, necesitas una cuenta de administrador"
+
+        end
+  
+
       elsif select == 3
         @view.gracias
       else 
@@ -40,10 +50,7 @@ class Controller
 
    def crear_vuelo
     # determinacion de si el user es admin = true
-    p "-"*50
-    p @user.admin == "t"
-    p @user.admin == "f"
-    p "-"*50
+   
     vuelo = @view.admin
     flight = Flight.create(num_flight: vuelo[:num_flight], date: vuelo[:date], depart: vuelo[:depart], from: vuelo[:from].downcase, to: vuelo[:to].downcase, duration: vuelo[:duration], cost: vuelo[:cost], passengers: vuelo[:passengers])
     if flight
