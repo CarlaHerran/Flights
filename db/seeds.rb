@@ -1,8 +1,8 @@
 # Este archivo sirve para crear registros de prueba
-user1 = User.create(name: 'Juan Perez', email: 'juan@gmail.com', admin: false)
-user2 = User.create(name: 'Pedro Sánchez', email: 'pedrito@gmail.com', admin: false)
-user3 = User.create(name: 'Jose González', email: 'Josefo22@gmail.com', admin: false)
-user4 = User.create(name: 'Carla Herran', email: 'carla.herran@gmail.com', admin: true)
+user1 = User.create(name: 'Juan Perez', email: 'juan@gmail.com', admin: false, password: 'hola')
+user2 = User.create(name: 'Pedro Sánchez', email: 'pedrito@gmail.com', admin: false, password: 'hola')
+user3 = User.create(name: 'Jose González', email: 'Josefo22@gmail.com', admin: false, password: 'hola')
+user4 = User.create(name: 'Carla Herran', email: 'carla.herran@gmail.com', admin: true, password: 'hola')
 
 
 flight1 = Flight.create(num_flight: 'A-5001', date: '2017-07-20', depart: '15:30:00', from: 'mexico', to: 'españa', duration: '07:45:00', cost: 5500.00, passengers: 30)

@@ -4,7 +4,8 @@ class CreateFlights < ActiveRecord::Migration[4.2]
     create_table :users do |u|
       u.string :name
       u.string :email
-      u.string :admin
+      u.boolean :admin# previamente string
+      u.string :password
     end
 
 # TABLA DE UNIÓN (USERS, FlIGHTS)
